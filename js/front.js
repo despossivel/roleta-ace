@@ -46,7 +46,7 @@ const checkUseAgent = () => {
 const requestVoto = (id) => M.toast({
   html: 'O Voto é secreto e ninguém irá saber sua identidade! :)', classes: 'rounded', outDuration: 400, inDuration: 400, completeCallback: function () {
     const voted = localStorage.getItem('voted')
-    
+
 
     if (!voted) {
 
@@ -80,12 +80,11 @@ const requestVoto = (id) => M.toast({
 
 $(document).on('click', '.btnCorrigir', () => $('.modal-overlay').click())
 
-
-const roletaView = (object) => {
-  $('#wrap').html(`<div class='boxCandidatoBig z-depth-1' id='${object.id}'> 
+// ../imgs/candidatos/
+const roletaView = object => $('#wrap').html(`<div class='boxCandidatoBig z-depth-1' id='${object.id}'> 
   <div class='headBox'>
     <div class='foto'>
-      <img class="z-depth-1" src="../imgs/candidatos/${object.foto}" />
+      <img class="z-depth-1" src="${object.foto}" />
     </div>
     <div class='nome'>
       ${object.nome}
@@ -95,11 +94,14 @@ const roletaView = (object) => {
     </div>
   </div>
 </div>`);
-}
+
 
 
 let count = 0;
 $('#verResultado').click(function () {
+
+  $(this).hide();
+  
   playSong('roleta');
 
   let candidato = DADOS[Math.floor(Math.random() * DADOS.length)];
@@ -113,94 +115,57 @@ $('#verResultado').click(function () {
     if (count == 42) {
       clearInterval(interval)
       stopSong();
-      ganhador();
+
+      ganhador(candidato);
     }
   }, 500)
 
 })
 
 
-const ganhador = () => {
-  let candidatos = DADOS;
+const ganhador = candidato => {
+  // let candidatos = candidato;
 
-  candidatos = candidatos.sort(function (a, b) {
+  // candidatos = candidatos.sort(function (a, b) {
 
-    if (parseInt(a.numeroDeVotos) > parseInt(b.numeroDeVotos)) {
-      return -1;
-    }
-    return 1;
-  });
-
-  let [primeiro, segundo, terceiro] = candidatos;
+  //   if (parseInt(a.numeroDeVotos) > parseInt(b.numeroDeVotos)) {
+  //     return -1;
+  //   }
+  //   return 1;
+  // });
 
 
-  let porcentagemPrimeiro = primeiro.numeroDeVotos / TOTAL * 100;
-  porcentagemPrimeiro = porcentagemPrimeiro.toFixed(2);
+  console.log('candidato >>>', candidato)
+
+  const primeiro = candidato;
 
 
-  let porcentagemSegundo = segundo.numeroDeVotos / TOTAL * 100;
-  porcentagemSegundo = porcentagemSegundo.toFixed(2);
+  // let porcentagemPrimeiro = primeiro.numeroDeVotos / TOTAL * 100;
+  // porcentagemPrimeiro = porcentagemPrimeiro.toFixed(2);
 
 
-  let porcentagemTerceiro = terceiro.numeroDeVotos / TOTAL * 100;
-  porcentagemTerceiro = porcentagemTerceiro.toFixed(2);
+  // let porcentagemSegundo = segundo.numeroDeVotos / TOTAL * 100;
+  // porcentagemSegundo = porcentagemSegundo.toFixed(2);
 
 
+  // let porcentagemTerceiro = terceiro.numeroDeVotos / TOTAL * 100;
+  // porcentagemTerceiro = porcentagemTerceiro.toFixed(2);
 
+
+  // ../imgs/candidatos/
   $('#wrap').html(`<div class='podio'>
-
-    <div class="segundo">
-      <div class='boxCandidatoBigPodioSub z-depth-1' id='${segundo.id}'> 
-        <div class='headBox'>
-          <div class='foto'>
-            <img class="z-depth-1" src="../imgs/candidatos/${segundo.foto}" />
-          </div>
-          <div class='nome'>
-            ${segundo.nome}
-          </div>
-          <div class='numero_partido'>
-          ${segundo.numeroDeVotos} Votos <br>
-          ${porcentagemSegundo}%
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="primeiro">
-      <div class='boxCandidatoBigPodio z-depth-1' id='${primeiro.id}'> 
+      <div class='boxCandidatoBig z-depth-1' id='${primeiro.id}'> 
       <div class='headBox'>
         <div class='foto'>
-          <img class="z-depth-1" src="../imgs/candidatos/${primeiro.foto}" />
+          <img class="z-depth-1" src="${primeiro.foto}" />
         </div>
         <div class='nome'>
           ${primeiro.nome}
         </div>
-        <div class='numero_partido'>
-        ${primeiro.numeroDeVotos} Votos <br>
-        ${porcentagemPrimeiro}%
-        </div>
       </div>
     </div>
     </div>
-
-
-    <div class="terceiro">
-      <div class='boxCandidatoBigPodioSub z-depth-1' id='${terceiro.id}'> 
-      <div class='headBox'>
-        <div class='foto'>
-          <img class="z-depth-1" src="../imgs/candidatos/${terceiro.foto}" />
-        </div>
-        <div class='nome'>
-          ${terceiro.nome}
-        </div>
-        <div class='numero_partido'>
-        ${terceiro.numeroDeVotos} Votos <br>
-        ${porcentagemTerceiro}%
-        </div>
-      </div>
-    </div>
-    </div>
-    
   </div>`);
 
 

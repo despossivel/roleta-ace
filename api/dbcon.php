@@ -3,11 +3,11 @@
 header('content-type: application/json; charset=utf-8');
 
 $mysqli = new \mysqli(
-  'localhost',
-  'root',
-  'root123.',
-  'dataFodase',
-  '3306'
+  '192.168.0.102',
+  'datafodase',
+  'datafodase',
+  'datafodase',
+  '33006'
 );
 
 $mysqli->set_charset("utf8");

@@ -11,8 +11,31 @@ services:
     links:
       - php
     container_name: nginx_Datafodase
+    networks: 
+      - app-network
   php:
     build: ./docker/php
     volumes:
       - .:/opt/work
     container_name: php_Datafodase
+    networks: 
+      - app-network
+  db:
+    image: mysql:5.7
+    command:  --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    ports: 
+        - "33006:3306"
+    volumes: 
+        - ./.docker/dbdata:/var/lib/mysql
+    environment: 
+        - MYSQL_DATABASE=laravel
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_USER=root
+    networks: 
+        - app-network
+networks:
+  app-network:
+      driver: bridge

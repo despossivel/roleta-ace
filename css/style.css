@@ -182,7 +182,7 @@ a {
 .foto img {
   width: 75px;
   height: 75px;
-  border-radius: 50%;
+  border-radius: 1%;
 }
 
 .nome {
@@ -624,7 +624,7 @@ a {
   }
 
   .boxCandidatoBig {
-    width: 50%;
+    width:100%;
     margin-top: 6%;
     background: #fff;
     border-radius: 9px;

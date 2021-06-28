@@ -3,7 +3,7 @@ services:
   nginx:
     build: ./docker/nginx
     ports:
-      - '80:80'
+      - '88:80'
     depends_on:
       - php
     volumes:
@@ -20,22 +20,22 @@ services:
     container_name: php_Datafodase
     networks: 
       - app-network
-  db:
-    image: mysql:5.7
-    command:  --innodb-use-native-aio=0
-    container_name: db
-    restart: always
-    tty: true
-    ports: 
-        - "33006:3306"
-    volumes: 
-        - ./.docker/dbdata:/var/lib/mysql
-    environment: 
-        - MYSQL_DATABASE=laravel
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_USER=root
-    networks: 
-        - app-network
+  # db:
+  #   image: mysql:5.7
+  #   command:  --innodb-use-native-aio=0
+  #   container_name: db
+  #   restart: always
+  #   tty: true
+  #   ports: 
+  #       - "33006:3306"
+  #   volumes: 
+  #       - ./.docker/dbdata:/var/lib/mysql
+  #   environment: 
+  #       - MYSQL_DATABASE=laravel
+  #       - MYSQL_ROOT_PASSWORD=root
+  #       - MYSQL_USER=root
+  #   networks: 
+  #       - app-network
 networks:
   app-network:
       driver: bridge

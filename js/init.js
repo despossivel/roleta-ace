@@ -8,7 +8,7 @@ const dados = [
   { id: '5', nome: 'Pricila', partido: 'agil', foto: 'https://s3.amazonaws.com/TWFiles/61960/userAvatar/tf_ce5f57c4-43f1-4685-be34-02a85237f450.17554091_1376268985765023_7678593510644646939_n_-_Priscila_Collalto.jpg', numero: '5' },
   { id: '6', nome: 'Thiago', partido: 'po', foto: 'https://s3.amazonaws.com/TWFiles/61960/userAvatar/tf_728e1a51-8ff1-4e6c-b165-77b8e1686ec5.avatar.jpg', numero: '6' },
   { id: '7', nome: 'Mauricio', partido: 'dev', foto: 'https://s3.amazonaws.com/TWFiles/61960/userAvatar/tf_a77cce26-08c0-4d45-bf6d-954d5036755c.Eu_-_Mauricio_Rezende.jpg', numero: '7' },
-  { id: '8', nome: 'Gabriel', partido: 'design', foto: 'https://thumbs.dreamstime.com/z/homem-avatar-com-barba-e-%C3%B3culos-%C3%ADcone-de-sobre-fundo-branco-ilustra%C3%A7%C3%A3o-vetorial-161726581.jpg', numero: '8' }
+  { id: '8', nome: 'Gabriel', partido: 'design', foto: 'https://lh3.googleusercontent.com/a-/AOh14Gim_BmLT4t0g11YkeycTAz-ss6JTh4tOHrOL3eA=s192-c-mo', numero: '8' }
 ] //json.dados;
 
 
